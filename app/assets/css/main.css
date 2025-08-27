@@ -1,0 +1,43 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme static {
+  --font-sans: 'Public Sans', sans-serif;
+
+
+  /*--color-green-50: #effdf5;*/
+  /*--color-green-100: #d9fbe8;*/
+  /*--color-green-200: #b3f5d1;*/
+  /*--color-green-300: #75edae;*/
+  /*--color-green-400: #00dc82;*/
+  /*--color-green-500: #00c16a;*/
+  /*--color-green-600: #00a155;*/
+  /*--color-green-700: #007f45;*/
+  /*--color-green-800: #016538;*/
+  /*--color-green-900: #0a5331;*/
+  /*--color-green-950: #052e16;*/
+
+  --color-red-50: #fef2f2;
+  --color-red-100: #fee2e2;
+  --color-red-200: #fecaca;
+  --color-red-300: #fca5a5;
+  --color-red-400: #f87171;
+  --color-red-500: #ed556a;
+  --color-red-600: #dc2626;
+  --color-red-700: #b91c1c;
+  --color-red-800: #991b1b;
+  --color-red-900: #7f1d1d;
+  --color-red-950: #450a0a;
+
+  --color-zincgray-50: #fafafa;
+  --color-zincgray-100: #f4f4f5;
+  --color-zincgray-200: #e4e4e7;
+  --color-zincgray-300: #d4d4d8;
+  --color-zincgray-400: #a1a1aa;
+  --color-zincgray-500: #7a7374;
+  --color-zincgray-600: #71717a;
+  --color-zincgray-700: #3f3f46;
+  --color-zincgray-800: #27272a;
+  --color-zincgray-900: #18181b;
+  --color-zincgray-950: #09090b;
+}

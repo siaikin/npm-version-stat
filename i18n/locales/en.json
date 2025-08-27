@@ -1,0 +1,60 @@
+{
+  "app": {
+    "title": "NPM Package Version Download Statistics",
+    "description": "Query and analyze NPM package version download statistics data to understand the popularity of each version",
+    "heroTitle": "📦 NPM Package Version Download Statistics"
+  },
+  "header": {
+    "title": "NPM Package Version Stats",
+    "viewSource": "View Source"
+  },
+  "footer": {
+    "copyright": "NPM Package Version Download Statistics Tool",
+    "dataSource": "Data Source",
+    "npmOfficial": "NPM Official",
+    "dataSourceText": "Using real version download data, sorted by download count showing top 50 versions"
+  },
+  "form": {
+    "packageName": "Package Name",
+    "packageNamePlaceholder": "e.g.: react, vue, express",
+    "period": "Statistics Period",
+    "searchButton": "Query Version Downloads",
+    "learnMore": "Can only query the last week"
+  },
+  "period": {
+    "lastDay": "Last Day",
+    "lastWeek": "Last Week",
+    "lastMonth": "Last Month",
+    "lastYear": "Last Year"
+  },
+  "stats": {
+    "totalDownloads": "Total Downloads",
+    "totalVersions": "Total Versions",
+    "latestVersion": "Latest Version",
+    "createdDate": "Created Date",
+    "versionStatistics": "Version Download Statistics",
+    "rank": "Rank",
+    "version": "Version",
+    "tag": "Tag",
+    "downloads": "Downloads",
+    "publishedDate": "Published Date",
+    "status": "Status",
+    "latest": "Latest",
+    "latestVersionTooltip": "Latest Version"
+  },
+  "filter": {
+    "allTags": "All Tags",
+    "filterByTag": "Filter by Tag"
+  },
+  "messages": {
+    "loading": "Fetching data...",
+    "enterPackageName": "Please enter package name",
+    "packageNotFound": "Package \"{packageName}\" does not exist or cannot get information",
+    "downloadStatsFailed": "Unable to get download statistics data",
+    "versionDownloadsFailed": "Unable to get version download statistics data",
+    "versionDownloadsWarning": "Failed to get version downloads:",
+    "unknownError": "Unknown error",
+    "noDescription": "No description available",
+    "customPackage": "Custom package"
+  }
+}

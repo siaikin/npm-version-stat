@@ -1,0 +1,60 @@
+{
+  "app": {
+    "title": "NPM 包版本下载量统计",
+    "description": "查询和分析 NPM 包各版本的下载统计数据，了解不同版本的受欢迎程度",
+    "heroTitle": "📦 NPM 包版本下载量统计"
+  },
+  "header": {
+    "title": "NPM 包版本统计",
+    "viewSource": "查看源码"
+  },
+  "footer": {
+    "copyright": "NPM 包版本下载量统计工具",
+    "dataSource": "数据来源",
+    "npmOfficial": "NPM 官网",
+    "dataSourceText": "使用真实的版本下载量数据，按下载量排序显示前50个版本"
+  },
+  "form": {
+    "packageName": "包名",
+    "packageNamePlaceholder": "例如: react, vue, express",
+    "period": "统计周期",
+    "searchButton": "查询版本下载量",
+    "learnMore": "只能查询最近一周"
+  },
+  "period": {
+    "lastDay": "最近一天",
+    "lastWeek": "最近一周",
+    "lastMonth": "最近一月",
+    "lastYear": "最近一年"
+  },
+  "stats": {
+    "totalDownloads": "总下载量",
+    "totalVersions": "总版本数",
+    "latestVersion": "最新版本",
+    "createdDate": "创建时间",
+    "versionStatistics": "版本下载量统计",
+    "rank": "排名",
+    "version": "版本",
+    "tag": "标签",
+    "downloads": "下载量",
+    "publishedDate": "发布时间",
+    "status": "状态",
+    "latest": "最新",
+    "latestVersionTooltip": "最新版本"
+  },
+  "filter": {
+    "allTags": "所有标签",
+    "filterByTag": "按标签筛选"
+  },
+  "messages": {
+    "loading": "正在获取数据...",
+    "enterPackageName": "请输入包名",
+    "packageNotFound": "包 \"{packageName}\" 不存在或无法获取信息",
+    "downloadStatsFailed": "无法获取下载统计数据",
+    "versionDownloadsFailed": "无法获取版本下载统计数据",
+    "versionDownloadsWarning": "获取版本下载量失败:",
+    "unknownError": "未知错误",
+    "noDescription": "暂无描述",
+    "customPackage": "自定义包"
+  }
+}
