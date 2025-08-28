@@ -7,6 +7,7 @@ useSeoMeta({
 })
 
 const colorMode = useColorMode()
+
 const { locale } = useI18n()
 
 const route = useRoute()
@@ -24,11 +25,12 @@ watch(packageName, v => navigateTo(`/${encodeURIComponent(v)}`))
       :description="t('app.description')"
       orientation="horizontal"
     >
-      <img
+      <NuxtImg
+        v-if="!colorMode.unknown"
         :src="`/images/hero.${locale}.${colorMode.value}.png`"
         alt="App screenshot"
         class="rounded-lg shadow-2xl ring ring-default"
-      >
+      />
     </UPageHero>
 
     <VersionStat v-model:package-name="packageName" />
