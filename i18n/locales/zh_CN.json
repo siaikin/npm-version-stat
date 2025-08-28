@@ -1,15 +1,15 @@
 {
   "app": {
-    "title": "NPM 包版本下载量统计",
+    "title": "NPM 包版本统计",
     "description": "查询和分析 NPM 包各版本的下载统计数据，了解不同版本的受欢迎程度",
-    "heroTitle": "📦 NPM 包版本下载量统计"
+    "heroTitle": "📦 NPM 包版本统计"
   },
   "header": {
     "title": "NPM 包版本统计",
     "viewSource": "查看源码"
   },
   "footer": {
-    "copyright": "NPM 包版本下载量统计工具",
+    "copyright": "NPM 包版本统计工具",
     "dataSource": "数据来源",
     "npmOfficial": "NPM 官网",
     "dataSourceText": "使用真实的版本下载量数据，按下载量排序显示前50个版本"

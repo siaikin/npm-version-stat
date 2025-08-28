@@ -322,7 +322,7 @@ async function fetchPackageData() {
   }
 }
 
-watch(() => form.packageName, () => fetchPackageData(), { immediate: true })
+watch(() => form.packageName, () => form.packageName.trim() && fetchPackageData(), { immediate: true })
 
 // 监听搜索查询变化
 watch(() => state.searchQuery, (newQuery) => {

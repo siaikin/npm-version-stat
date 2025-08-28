@@ -1,15 +1,15 @@
 {
   "app": {
-    "title": "NPM Package Version Download Statistics",
+    "title": "NPM Package Version Stats",
     "description": "Query and analyze NPM package version download statistics data to understand the popularity of each version",
-    "heroTitle": "📦 NPM Package Version Download Statistics"
+    "heroTitle": "📦 NPM Package Version Stats"
   },
   "header": {
     "title": "NPM Package Version Stats",
     "viewSource": "View Source"
   },
   "footer": {
-    "copyright": "NPM Package Version Download Statistics Tool",
+    "copyright": "NPM Package Version Stats Tool",
     "dataSource": "Data Source",
     "npmOfficial": "NPM Official",
     "dataSourceText": "Using real version download data, sorted by download count showing top 50 versions"

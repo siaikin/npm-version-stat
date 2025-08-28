@@ -1,17 +1,12 @@
 <script setup lang="ts">
-const { t, locales, setLocale } = useI18n()
+const { t, locale, locales, setLocale } = useI18n()
 
 const availableLocales = computed(() => {
   return locales.value.map(l => ({
     code: l.code,
     name: l.name,
-    flag: l.code === 'zh_cn' ? '🇨🇳' : '🇺🇸',
   }))
 })
-
-function switchLanguage(langCode: 'zh_cn' | 'en') {
-  setLocale(langCode)
-}
 </script>
 
 <template>
@@ -27,8 +22,10 @@ function switchLanguage(langCode: 'zh_cn' | 'en') {
       <!-- 语言切换器 -->
       <UDropdownMenu
         :items="[availableLocales.map(lang => ({
-          label: `${lang.flag} ${lang.name}`,
-          onSelect: () => switchLanguage(lang.code),
+          label: `${lang.name}`,
+          type: 'checkbox',
+          checked: lang.code === locale,
+          onSelect: () => setLocale(lang.code),
         }))]"
       >
         <UButton
