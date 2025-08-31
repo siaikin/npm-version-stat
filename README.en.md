@@ -1,104 +1,30 @@
-# NPM Package Version Download Statistics
+### Promotional Copy
 
-A tool for querying and analyzing NPM package version download statistics data to understand the popularity of different versions.
+**English** | [中文](./README.md)
 
-[中文版本](./README.md) | **English**
+🚀 **Say Goodbye to Version Selection Anxiety! I Built a Tool to Help You Find the "Golden Version" of Any NPM Package**
 
-## Features
+As a front-end developer, I often find myself in a dilemma.
 
-- 🔍 Search any NPM package
-- 📊 Display download statistics for each version
-- 📈 Sort and display version information by download count
-- 🏷️ Support filtering versions by tags
-- 🌍 Support Chinese and English interfaces
-- 📱 Responsive design, mobile-friendly
+When developing a universal library (e.g., one that supports Vue, React, and SolidJS), I need to set a **minimum compatible version** for these peer dependencies in `package.json`.
 
-## Tech Stack
+I can't just use the `latest` version because that would exclude many projects still using older versions, significantly reducing my library's reach. But if the version is too old, I miss out on the performance advantages and new features of newer versions.
 
-- [Nuxt 4](https://nuxt.com/) - Full-stack Vue framework
-- [Vue 3](https://vuejs.org/) - Progressive JavaScript framework
-- [Nuxt UI](https://ui.nuxt.com/) - UI component library
-- [Nuxt i18n](https://i18n.nuxtjs.org/) - Internationalization support
-- TypeScript - Type safety
+`npm.com` just coldly lists all the versions but doesn't tell me which one is the **mainstream choice** in the community.
 
-## Setup
+**My strategy is to find a "golden version": a version where the total downloads of it and all newer versions account for 90% of the total downloads in the past 7 days.**
 
-Make sure to install dependencies:
+To achieve this, I developed **NPM Version Stat**!
 
-```bash
-# npm
-npm install
+This little tool has one core function:
+1.  Enter any NPM package name.
+2.  It fetches the weekly download data for all versions.
+3.  **It sorts them by download count in descending order**, letting you see at a glance which version is the most popular.
+4.  It automatically highlights the "**golden version**" that meets the 90% download threshold!
 
-# pnpm
-pnpm install
+Now, whether I'm choosing dependencies for my own library or deciding if a project should upgrade, I have data to back my decisions, making the process simpler and more confident than ever before.
 
-# yarn
-yarn install
+If you've ever struggled with version selection, give this tool a try.
 
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-## Data Source
-
-- NPM Registry API for package information
-- NPM Downloads API for download statistics
-- Real-time data showing top 50 versions sorted by download count
-
-## License
-
-MIT License
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+🔗 **Try it online**: [https://npm-version-stat.vercel.app/](https://npm-version-stat.vercel.app/)
+🛠️ **GitHub Repository**: [https://github.com/siaikin/npm-version-stat](https://github.com/siaikin/npm-version-stat)
