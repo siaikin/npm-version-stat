@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { TableColumn, TableProps } from '@nuxt/ui'
-import { useDebounceFn } from '@vueuse/core'
+import { useClipboard, useDebounceFn } from '@vueuse/core'
 import { intlFormat, intlFormatDistance } from 'date-fns'
 import semver from 'semver'
 import { computed, reactive, watch } from 'vue'
@@ -65,6 +65,7 @@ const state = reactive({
   suggestions: [] as InputMenuItem[],
   selectedTags: ['stable'] as string[],
   selectedMajorVersions: [] as string[], // 新增：选中的大版本号
+  threshold: 90 as number, // 新增：阈值百分比
 })
 
 // 用于取消搜索请求的 AbortController
@@ -103,7 +104,7 @@ const formattedVersionsData = computed(() => {
 
   // 计算总下载量
   const totalDownloads = filteredData.reduce((sum, item) => sum + item.downloads, 0)
-  const threshold90 = totalDownloads * 0.9
+  const threshold90 = totalDownloads * (state.threshold / 100)
 
   // 计算占比、累积下载量和90%阈值标记
   let cumulativeDownloads = 0
@@ -115,13 +116,13 @@ const formattedVersionsData = computed(() => {
     const cumulativePercentage = totalDownloads > 0 ? (cumulativeDownloads / totalDownloads) * 100 : 0
 
     // 包含刚好在90%分界线上的版本：
-    // 如果当前版本是第一个使累积下载量超过90%的版本，也标记为在范围内
+    // 如果当前版本是第一个使累积下载量超过阈值的版本，也标记为在范围内
     let isWithin90Threshold = false
     if (cumulativeDownloads <= threshold90) {
       isWithin90Threshold = true
     }
     else if (!foundThresholdBoundary && cumulativeDownloads > threshold90) {
-      // 第一个超过90%阈值的版本也包含在内（分界线版本）
+      // 第一个超过阈值的版本也包含在内（分界线版本）
       isWithin90Threshold = true
       foundThresholdBoundary = true
     }
@@ -291,13 +292,13 @@ function isLast90ThresholdVersion(row: any): boolean {
   return lastItem ? row.original.rank === lastItem.rank : false
 }
 
-// 计算90%下载量的最小版本信息
+// 计算阈值下载量的最小版本信息
 const minVersionFor90Threshold = computed(() => {
   const within90Items = formattedVersionsData.value.filter(item => item.isWithin90Threshold)
   if (within90Items.length === 0) {
     return null
   }
-  
+
   // 按版本号分组（按主版本号）
   const versionsByMajor = within90Items.reduce((acc, item) => {
     const major = getMajorVersion(item.version)
@@ -307,7 +308,7 @@ const minVersionFor90Threshold = computed(() => {
     acc[major].push(item)
     return acc
   }, {} as Record<string, FormattedVersionData[]>)
-  
+
   // 找出每个主版本中最小的版本
   const minVersionsByMajor = Object.entries(versionsByMajor).map(([major, versions]) => {
     const sortedVersions = versions.sort((a, b) => {
@@ -328,7 +329,7 @@ const minVersionFor90Threshold = computed(() => {
     const numB = Number.parseInt(b.major.replace('v', ''), 10)
     return numB - numA
   })
-  
+
   return {
     items: minVersionsByMajor,
     totalVersions: within90Items.length,
@@ -336,11 +337,18 @@ const minVersionFor90Threshold = computed(() => {
   }
 })
 
+// 复制功能
+const { copy } = useClipboard()
+// 复制单个版本号
+function copySingleVersion(version: string) {
+  copy(version)
+}
+
 const versionTable = useTemplateRef<ComponentPublicInstance>('versionTableRef')
 const scrollToVersionTable = useDebounceFn(() => {
   versionTable.value?.$el.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }, 1000)
-watch(() => [state.selectedTags, state.selectedMajorVersions], () => scrollToVersionTable(), { flush: 'post' })
+watch(() => [state.selectedTags, state.selectedMajorVersions, state.threshold], () => scrollToVersionTable(), { flush: 'post' })
 
 // 组合式函数：API 操作
 function usePackageAPI() {
@@ -676,7 +684,7 @@ const sorting = ref([])
       </div>
 
       <!-- 筛选区域 - 响应式网格布局 -->
-      <div class="grid px-4 grid-cols-1 lg:grid-cols-2 gap-2 py-2 sticky top-(--ui-header-height) z-50 bg-default/75 backdrop-blur border-default border-b">
+      <div class="grid px-4 grid-cols-1 lg:grid-cols-3 gap-2 py-2 sticky top-(--ui-header-height) z-50 bg-default/75 backdrop-blur border-default border-b">
         <!-- 标签筛选 -->
         <UFormField :label="t('filter.filterByTag')" name="tags">
           <UCheckboxGroup
@@ -690,6 +698,20 @@ const sorting = ref([])
           <UCheckboxGroup
             v-model="state.selectedMajorVersions" variant="list" orientation="horizontal"
             :items="majorVersionOptions" :ui="{ fieldset: 'flex flex-wrap gap-2' }"
+          />
+        </UFormField>
+
+        <!-- 阈值选择 -->
+        <UFormField :label="`${t('filter.threshold')}: ${state.threshold}%`" name="threshold">
+          <USlider
+            v-model="state.threshold"
+            :min="50"
+            :max="100"
+            :step="5"
+            color="primary"
+            size="md"
+            tooltip
+            class="w-full"
           />
         </UFormField>
       </div>
@@ -754,6 +776,48 @@ const sorting = ref([])
           </UTooltip>
         </template>
       </UTable>
+
+      <!-- 阈值最小版本汇总 - Sticky 底部 -->
+      <div
+        v-if="minVersionFor90Threshold"
+        class="sticky bottom-0 bg-primary-50/90 dark:bg-primary-900/90 backdrop-blur border-t border-primary/20 p-3 mt-auto"
+      >
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-2">
+            <UIcon name="i-lucide-target" class="text-primary" />
+            <h4 class="font-semibold text-primary text-sm">
+              {{ t('stats.minVersionForThreshold', { threshold: state.threshold }) }}
+            </h4>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-2">
+          <div
+            v-for="item in minVersionFor90Threshold.items"
+            :key="item.major"
+            class="flex items-center gap-1.5 px-2 py-1 bg-white/50 dark:bg-gray-800/50 rounded-md border border-primary/10 text-xs"
+          >
+            <UBadge :color="getTagColor(item.minVersion?.tag || 'stable')" variant="soft" size="xs">
+              {{ item.major }}
+            </UBadge>
+            <NuxtLink
+              target="_blank"
+              :to="`https://www.npmjs.com/package/${state.packageData?.name}/v/${item.minVersion?.version}`"
+              class="font-mono hover:underline"
+            >
+              {{ item.minVersion?.version }}
+            </NuxtLink>
+            <UButton
+              icon="i-lucide-copy"
+              color="neutral"
+              variant="ghost"
+              size="xs"
+              class="ml-1 opacity-60 hover:opacity-100"
+              @click="copySingleVersion(item.minVersion?.version || '')"
+            />
+          </div>
+        </div>
+      </div>
     </UContainer>
   </Gueleton>
 </template>

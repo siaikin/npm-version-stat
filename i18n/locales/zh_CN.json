@@ -35,6 +35,7 @@
     "versionStatistics": "版本下载量统计",
     "rank": "排名",
     "version": "版本",
+    "versions": "个版本",
     "tag": "标签",
     "downloads": "下载量",
     "publishedDate": "发布时间",
@@ -43,12 +44,22 @@
     "latestVersionTooltip": "最新版本",
     "percentage": "占比",
     "cumulativePercentage": "累积占比",
-    "within90Threshold": "累积下载量达到90%阈值范围内（含分界线版本）"
+    "within90Threshold": "累积下载量达到阈值范围内（含分界线版本）",
+    "minVersionFor90Threshold": "{threshold}%下载量的最小版本",
+    "minVersionForThreshold": "{threshold}%下载量的最小版本",
+    "totalCoverage": "总覆盖量",
+    "downloadThreshold": "下载量阈值"
   },
   "filter": {
     "allTags": "所有标签",
     "filterByTag": "按标签筛选",
-    "filterByMajorVersion": "按大版本号筛选"
+    "filterByMajorVersion": "按大版本号筛选",
+    "threshold": "下载量阈值"
+  },
+  "common": {
+    "unknown": "未知",
+    "copy": "复制",
+    "copied": "已复制"
   },
   "messages": {
     "loading": "正在获取数据...",

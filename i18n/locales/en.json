@@ -35,6 +35,7 @@
     "versionStatistics": "Version Download Statistics",
     "rank": "Rank",
     "version": "Version",
+    "versions": "versions",
     "tag": "Tag",
     "downloads": "Downloads",
     "publishedDate": "Published Date",
@@ -43,12 +44,22 @@
     "latestVersionTooltip": "Latest Version",
     "percentage": "Percentage",
     "cumulativePercentage": "Cumulative %",
-    "within90Threshold": "Cumulative downloads within 90% threshold (including boundary version)"
+    "within90Threshold": "Cumulative downloads within threshold (including boundary version)",
+    "minVersionFor90Threshold": "Minimum Versions for {threshold}% Downloads",
+    "minVersionForThreshold": "Minimum Versions for {threshold}% Downloads",
+    "totalCoverage": "Total Coverage",
+    "downloadThreshold": "download threshold"
   },
   "filter": {
     "allTags": "All Tags",
     "filterByTag": "Filter by Tag",
-    "filterByMajorVersion": "Filter by Major Version"
+    "filterByMajorVersion": "Filter by Major Version",
+    "threshold": "Download Threshold"
+  },
+  "common": {
+    "unknown": "Unknown",
+    "copy": "Copy",
+    "copied": "Copied"
   },
   "messages": {
     "loading": "Fetching data...",
