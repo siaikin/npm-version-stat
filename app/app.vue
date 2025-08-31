@@ -52,6 +52,6 @@ useHead({
 
     <NuxtPage />
 
-    <LayoutFooter />
+    <!-- <LayoutFooter /> -->
   </UApp>
 </template>

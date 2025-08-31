@@ -40,11 +40,15 @@
     "publishedDate": "发布时间",
     "status": "状态",
     "latest": "最新",
-    "latestVersionTooltip": "最新版本"
+    "latestVersionTooltip": "最新版本",
+    "percentage": "占比",
+    "cumulativePercentage": "累积占比",
+    "within90Threshold": "累积下载量达到90%阈值范围内（含分界线版本）"
   },
   "filter": {
     "allTags": "所有标签",
-    "filterByTag": "按标签筛选"
+    "filterByTag": "按标签筛选",
+    "filterByMajorVersion": "按大版本号筛选"
   },
   "messages": {
     "loading": "正在获取数据...",

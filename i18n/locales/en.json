@@ -40,11 +40,15 @@
     "publishedDate": "Published Date",
     "status": "Status",
     "latest": "Latest",
-    "latestVersionTooltip": "Latest Version"
+    "latestVersionTooltip": "Latest Version",
+    "percentage": "Percentage",
+    "cumulativePercentage": "Cumulative %",
+    "within90Threshold": "Cumulative downloads within 90% threshold (including boundary version)"
   },
   "filter": {
     "allTags": "All Tags",
-    "filterByTag": "Filter by Tag"
+    "filterByTag": "Filter by Tag",
+    "filterByMajorVersion": "Filter by Major Version"
   },
   "messages": {
     "loading": "Fetching data...",
