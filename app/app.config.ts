@@ -11,6 +11,15 @@ export default defineAppConfig({
     },
   },
   gueleton: {
-    skeleton: { bone: { className: 'animate-pulse' }, container: { style: { zIndex: 60 } } },
+    skeleton: {
+      bone: {
+        className: 'bg-elevated animate-pulse',
+        style: { backgroundColor: '' },
+      },
+      container: {
+        className: 'bg-default',
+        style: { backgroundColor: '', zIndex: 60 },
+      },
+    },
   },
 })
