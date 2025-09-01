@@ -587,9 +587,8 @@ const sorting = ref([])
       data-key="package-info"
       :loading="state.isLoading"
       :data="state.packageData"
-      :skeleton="{ type: 'inPlace' }"
     >
-      <UCard>
+      <UCard class="relative z-10">
         <!-- 包标题行 -->
         <div class="flex items-center justify-between mb-4">
           <div class="flex items-center gap-3">
